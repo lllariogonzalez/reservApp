@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "b4f5cef9-3927-42da-a0ea-5901ca33f9dc",
+		"name": "reservApp",
+		"description": "Utilizando Node.js y Express Framework, desarrollá los endpoints para el sistema de reservas de habitación de un hotel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24977551"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Registro - Nuevo usuario - http://localhost:3000/user/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\": \"Mario Gonzalez\",\r\n    \"email\": \"lllariogonzalez@gmail.com\",\r\n    \"dni\": \"34499275\",\r\n    \"password\": \"tuGerente\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login  - http://localhost:3000/user/login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"lllariogonzalez@gmail.com\",\r\n    \"password\": \"tuGerente\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints utilizados para registrarse como usuario con email y contraseña o poder loguearse para acceder y realizar una reserva."
+		},
+		{
+			"name": "Rooms",
+			"item": [
+				{
+					"name": "Nueva habitación - http://localhost:3000/room",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"stars\": \"5\",\r\n    \"description\": \"Habitación moderna, amplia con todos los servicios\",\r\n    \"price\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/room",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar habitaciones - http://localhost:3000/room",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/room",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para crear y disponer de habitaciones en el hotel a reservar por los usuarios, como así también listar y comprobar las habitaciones disponibles."
+		},
+		{
+			"name": "Reservations",
+			"item": [
+				{
+					"name": "Registro de reserva - http://localhost:3000/reservation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"UserId\": 1,\r\n  \"Rooms\": [1],\r\n  \"days\": 3,\r\n  \"method\": \"efectivo\",\r\n  \"status\": \"pagado\",\r\n  \"total\": 170\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/reservation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registro de reserva - http://localhost:3000/reservation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/reservation/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reservation",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar reservas - http://localhost:3000/reservation",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/reservation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "StartFragment\n\nEndpoints realizar la efectiva reserva en el hotel, con los datos necesarios de el usuario que la realiza como de las habitaciones que se afectan, también cuenta con uno para listar todas las reservas y otro para actualizarlas modificando así su estado.\n\nEndFragme"
+		}
+	]
+}
