@@ -8,20 +8,20 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
-//routes
+// routes
 app.use('/user', userRouter)
 app.use('/reservation', reservationRouter)
 app.use('/room', roomRouter)
 
-//handle-errors
+// handle-errors
 app.use((err, _req, res, _next) => {
-    const status = err.status || 500
-    const message = err.message || err
-    console.error(err)
-    return res.status(status).send(message);
-  });
-  
+  const status = err.status || 500
+  const message = err.message || err
+  console.log(message)
+  res.status(status).json({ message })
+})
+
 module.exports = app

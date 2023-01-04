@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fullname\": \"Mario Gonzalez\",\r\n    \"email\": \"lllariogonzalez@gmail.com\",\r\n    \"dni\": \"34499275\",\r\n    \"password\": \"tuGerente\"\r\n}",
+							"raw": "{\r\n    \"fullname\": \"Mario Gonzalez\",\r\n    \"email\": \"lllariogonzalez@gmail.com\",\r\n    \"dni\": \"34499275\",\r\n    \"password\": \"tuGerente12\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -106,7 +106,7 @@
 					"response": []
 				},
 				{
-					"name": "Listar habitaciones - http://localhost:3000/room",
+					"name": "Habitaciones disponibles - http://localhost:3000/room",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -135,6 +135,35 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Eliminar habitación - http://localhost:3000/room/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/room/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "Endpoints para crear y disponer de habitaciones en el hotel a reservar por los usuarios, como así también listar y comprobar las habitaciones disponibles."
@@ -143,13 +172,13 @@
 			"name": "Reservations",
 			"item": [
 				{
-					"name": "Registro de reserva - http://localhost:3000/reservation",
+					"name": "Nueva Reserva - http://localhost:3000/reservation",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"UserId\": 1,\r\n  \"Rooms\": [1],\r\n  \"days\": 3,\r\n  \"method\": \"efectivo\",\r\n  \"status\": \"pagado\",\r\n  \"total\": 170\r\n}",
+							"raw": "{\r\n  \"UserId\": 1,\r\n  \"Rooms\": [1],\r\n  \"days\": 3,\r\n  \"method\": \"efectivo\",\r\n  \"status\": \"pendiente\",\r\n  \"total\": 170\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -171,13 +200,13 @@
 					"response": []
 				},
 				{
-					"name": "Registro de reserva - http://localhost:3000/reservation",
+					"name": "Actualizar Reserva ID - http://localhost:3000/reservation/:id",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\r\n  \"status\": \"pagado\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -200,7 +229,7 @@
 					"response": []
 				},
 				{
-					"name": "Listar reservas - http://localhost:3000/reservation",
+					"name": "Reservas actuales - http://localhost:3000/reservation",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},

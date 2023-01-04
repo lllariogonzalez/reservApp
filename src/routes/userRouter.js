@@ -1,14 +1,14 @@
-const { Router } = require("express")
-const { 
-    userLogin, 
-    userRegister 
-} = require("../controllers/userController")
+const { Router } = require('express')
+const {
+  userLogin,
+  userRegister
+} = require('../controllers/userController')
 
 const userRouter = Router()
 
-//CRUD
+// CRUD
 userRouter
-    .get("/login", userLogin)
-    .post("/register", userRegister)
+  .post('/login', userLogin)
+  .post('/register', userRegister)
 
 module.exports = userRouter

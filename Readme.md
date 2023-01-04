@@ -7,7 +7,8 @@ Para levantar el servidor localmente:
 ```javascript
 npm install
 npm start
-npm run dev //modo desarrollo con nodemon
+npm run dev // modo desarrollo con nodemon
+npm test // test de integración con jest y supertest
 ```
 
 Para levantar el servidor en un contenedor de Docker:
