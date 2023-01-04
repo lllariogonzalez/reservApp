@@ -29,15 +29,17 @@ Para poder asociar una reserva al cliente/usuario se crean 2 endpoints, para reg
 
 > __POST__ /user/register
 
-> __GET__ /user/login
+> __POST__ /user/login
 
 ## Habitaciones
 
-Para disponer del control, crear y detallar las habitaciones disponibles se crean 2 endpoints, un POST para crear y un GET para obtener todo lo disponible a ser reservados
+Para disponer del control, crear y detallar las habitaciones disponibles se crean 2 endpoints, un POST para crear y un GET para obtener todo lo disponible a ser reservados, también se agrega un DELETE para eliminar una habitación
 
 > __POST__ /room
 
 > __GET__ /room
+
+> __DELETE__ /room/:id
 
 ## Reservas
 
@@ -64,3 +66,4 @@ PG_USER= ...
 PG_PASSWORD= ...
 PG_HOST= ...
 ```
+

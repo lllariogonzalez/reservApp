@@ -41,15 +41,12 @@
 				},
 				{
 					"name": "Login  - http://localhost:3000/user/login",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"lllariogonzalez@gmail.com\",\r\n    \"password\": \"tuGerente\"\r\n}",
+							"raw": "{\r\n    \"email\": \"lllariogonzalez@gmail.com\",\r\n    \"password\": \"tuGerente12\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
