@@ -4,12 +4,13 @@ const {
   postReservation,
   updateReservation
 } = require('../controllers/reservationController')
+const { checkJwt } = require('../middlewares/session')
 
 const reservationRouter = Router()
 
 reservationRouter
-  .get('/', getReservations)
-  .put('/:id', updateReservation)
-  .post('/', postReservation)
+  .get('/', checkJwt, getReservations)
+  .put('/:id', checkJwt, updateReservation)
+  .post('/', checkJwt, postReservation)
 
 module.exports = reservationRouter

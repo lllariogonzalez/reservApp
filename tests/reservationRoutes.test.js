@@ -15,33 +15,39 @@ describe('Room Routes', () => {
     total: 100
   }
 
+  const user = {
+    fullname: 'Mario Gonzalez',
+    email: 'lllariogonzalez@gmail.com',
+    dni: '34499275',
+    password: 'tuGerente1234'
+  }
+
+  const room = {
+    stars: '5',
+    description: 'Habitación moderna, amplia con todos los servicios',
+    price: 100
+  }
+
+  let token
+
   beforeAll(async () => {
-    const user = {
-      fullname: 'Mario Gonzalez',
-      email: 'lllariogonzalez@gmail.com',
-      dni: '34499275',
-      password: 'tuGerente1234'
-    }
-    const room = {
-      stars: '5',
-      description: 'Habitación moderna, amplia con todos los servicios',
-      price: 100
-    }
     await sequelize.sync({ force: true })
     await request.post('/user/register').send(user)
     await request.post('/room').send(room)
+    const userLogin = await request.post('/user/login').send({ email: user.email, password: user.password })
+    token = userLogin.body.token
   })
 
   describe('POST /reservation', () => {
     it('should respond with a 201 status code and return new reservation', async () => {
-      const response = await request.post('/reservation').send(reservation)
+      const response = await request.post('/reservation').set('Authorization', `Bearer ${token}`).send(reservation)
       expect(response.statusCode).toBe(201)
       expect(response.type).toBe('application/json')
       expect(response.body).toHaveProperty('id', 1)
     })
 
     it('should respond with a 400 status code if the reservation is incomplete', async () => {
-      const response = await request.post('/reservation').send({})
+      const response = await request.post('/reservation').set('Authorization', `Bearer ${token}`).send({})
       expect(response.statusCode).toBe(400)
       expect(response.type).toBe('application/json')
       expect(response.body.error).toBe('Invalid reservation')
@@ -50,14 +56,14 @@ describe('Room Routes', () => {
 
   describe('PUT /reservation/:id', () => {
     it('should respond with a 200 status code and change status reservation', async () => {
-      const response = await request.put('/reservation/1').send({ status: 'pagado' })
+      const response = await request.put('/reservation/1').set('Authorization', `Bearer ${token}`).send({ status: 'pagado' })
       expect(response.statusCode).toBe(200)
       expect(response.type).toBe('application/json')
       expect(response.body.status).toBe('pagado')
     })
 
     it('should respond with a 404 status code if id is invalid', async () => {
-      const response = await request.put('/reservation/11')
+      const response = await request.put('/reservation/11').set('Authorization', `Bearer ${token}`)
       expect(response.statusCode).toBe(404)
       expect(response.body.error).toBe('Reservation not found')
     })
@@ -65,7 +71,7 @@ describe('Room Routes', () => {
 
   describe('GET /reservation', () => {
     it('should respond with a 200 status code and return reservations array ', async () => {
-      const response = await request.get('/reservation')
+      const response = await request.get('/reservation').set('Authorization', `Bearer ${token}`)
       expect(response.statusCode).toBe(200)
       expect(response.type).toBe('application/json')
       expect(response.body).toBeInstanceOf(Array)
@@ -73,7 +79,7 @@ describe('Room Routes', () => {
     })
 
     it('should respond with a 200 status code and content User & Rooms property ', async () => {
-      const response = await request.get('/reservation')
+      const response = await request.get('/reservation').set('Authorization', `Bearer ${token}`)
       expect(response.statusCode).toBe(200)
       expect(response.type).toBe('application/json')
       expect(response.body[0].User).toBeDefined()

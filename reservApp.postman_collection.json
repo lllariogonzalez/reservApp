@@ -171,6 +171,16 @@
 				{
 					"name": "Nueva Reserva - http://localhost:3000/reservation",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImxsbGFyaW9nb256YWxlekBnbWFpbC5jb20iLCJpYXQiOjE2NzMzNTIzNzksImV4cCI6MTY3MzM1OTU3OX0.E_8s4dYGVxVvo2gssQsXmlF4jYuZ3eMnKanlgzwIhMQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -199,6 +209,16 @@
 				{
 					"name": "Actualizar Reserva ID - http://localhost:3000/reservation/:id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImxsbGFyaW9nb256YWxlekBnbWFpbC5jb20iLCJpYXQiOjE2NzMzNTIzNzksImV4cCI6MTY3MzM1OTU3OX0.E_8s4dYGVxVvo2gssQsXmlF4jYuZ3eMnKanlgzwIhMQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -231,6 +251,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImxsbGFyaW9nb256YWxlekBnbWFpbC5jb20iLCJpYXQiOjE2NzMzNTIzNzksImV4cCI6MTY3MzM1OTU3OX0.E_8s4dYGVxVvo2gssQsXmlF4jYuZ3eMnKanlgzwIhMQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {

@@ -8,6 +8,12 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true
     },
+    image: {
+      type: DataTypes.STRING,
+      validate: {
+        isUrl: true
+      }
+    },
     stars: {
       type: DataTypes.ENUM('5', '3', '1'),
       allowNull: false

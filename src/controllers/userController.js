@@ -1,5 +1,6 @@
 const { User } = require('../utils/database')
 const { encrypt, compare } = require('../utils/handleBycrypt')
+const { generateToken } = require('../utils/handleJWT')
 
 const userLogin = async (req, res, next) => {
   try {
@@ -7,9 +8,12 @@ const userLogin = async (req, res, next) => {
     const user = await User.findOne({ where: { email } })
     if (!user) return res.status(404).json({ error: 'User not found' })
     const checkPassword = await compare(password, user.password)
-    checkPassword
-      ? res.json(user)
-      : res.status(409).json({ error: 'Invalid password' })
+    if (checkPassword) {
+      const token = generateToken(email)
+      res.json({ user, token })
+    } else {
+      res.status(409).json({ error: 'Invalid password' })
+    }
   } catch (error) {
     next(error)
   }

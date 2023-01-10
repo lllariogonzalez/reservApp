@@ -25,7 +25,7 @@ se utiliza sequelize y postgreSQL para la aplicación
 
 ## Usuarios
 
-Para poder asociar una reserva al cliente/usuario se crean 2 endpoints, para registrarse y para loguearse si ya se encuentra registrado.
+Para poder asociar una reserva al cliente/usuario se crean 2 endpoints, para registrarse y para loguearse si ya se encuentra registrado. Se usa Bycrypt y JWToken para encriptar password, autenticación y autorización.
 
 > __POST__ /user/register
 
@@ -43,7 +43,7 @@ Para disponer del control, crear y detallar las habitaciones disponibles se crea
 
 ## Reservas
 
-Y por ultimo y el principal del negocio se crean 3 endpoints, un POST para que el usuario logueado y con la/las habitacion/es seleccionadas pueda concretar la reserva y realizar el pago, tambien se crea un PUT que recibe por params el id para actualizar el estado de la reserva o cualquier detalle necesario, y finalmente un GET para obtener la lista de todas las reservas actuales con sus relaciones Usuario y Habitación/es
+Y por ultimo y el principal del negocio se crean 3 endpoints, un POST para que el usuario logueado y con la/las habitacion/es seleccionadas pueda concretar la reserva y realizar el pago, tambien se crea un PUT que recibe por params el id para actualizar el estado de la reserva o cualquier detalle necesario, y finalmente un GET para obtener la lista de todas las reservas actuales con sus relaciones Usuario y Habitación/es. Todos necesitan un Bearer token de sesión válido que se genera en el login
 
 > __POST__ /reservation
 
@@ -65,5 +65,5 @@ PG_NAME= ...
 PG_USER= ...
 PG_PASSWORD= ...
 PG_HOST= ...
+JWT_SECRET= ...
 ```
-

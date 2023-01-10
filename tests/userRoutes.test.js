@@ -32,15 +32,16 @@ describe('User Routes', () => {
   })
 
   describe('POST /user/login', () => {
-    it('should respond with a 200 status code and return user', async () => {
+    it('should respond with a 200 status code and return user and token', async () => {
       const response = await request.post('/user/login').send({
         email: 'lllariogonzalez@gmail.com',
         password: 'tuGerente1234'
       })
       expect(response.statusCode).toBe(200)
       expect(response.type).toBe('application/json')
-      expect(response.body.fullname).toBe('Mario Gonzalez')
-      expect(response.body.dni).toBe(34499275)
+      expect(response.body.user.fullname).toBe('Mario Gonzalez')
+      expect(response.body.user.dni).toBe(34499275)
+      expect(response.body.token).toBeDefined()
     })
 
     it('should respond with a 404 status code with user invalid', async () => {
