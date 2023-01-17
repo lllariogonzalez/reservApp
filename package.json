@@ -31,6 +31,10 @@
     "supertest": "6.3.3"
   },
   "eslintConfig": {
-    "extends": "standard"
+    "extends": "standard",
+    "env": {
+      "jest": true,
+      "node": true
+    }
   }
 }
